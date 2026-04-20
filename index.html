@@ -1,212 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vantgard Systems — Intelligent Architecture for the Enterprise</title>
-  
-  <meta name="description" content="Architecting autonomous AI systems for B2B enterprises.">
-  <meta property="og:title" content="Vantgard Systems | AI Strategy">
-  <meta property="og:description" content="High-performance infrastructure for the autonomous era.">
-  <meta property="og:image" content="https://vantgard.ai/og-image.jpg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vantgard Systems — Intelligent Architecture</title>
+    
+    <link rel="icon" href="favicon.png" type="image/png">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400&family=DM+Mono&display=swap" rel="stylesheet">
 
-  <style>
-    /* RESET & LUXURY VARS */
-    :root {
-      --black: #000000;
-      --surface: #0a0a0a;
-      --border: rgba(255,255,255,0.08);
-      --white: #ffffff;
-      --muted: #888888;
-      --accent: #d4d4d4;
-    }
+    <style>
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --muted: #666666;
+            --border: rgba(255, 255, 255, 0.1);
+        }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; background: var(--black); }
-    body { 
-      font-family: 'DM Sans', sans-serif; 
-      color: var(--white); 
-      overflow-x: hidden; 
-      -webkit-font-smoothing: antialiased;
-      cursor: none; /* Custom cursor */
-    }
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+        body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
 
-    /* CUSTOM CURSOR */
-    #cursor-dot { width: 6px; height: 6px; background: white; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); }
-    #cursor-ring { width: 35px; height: 35px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: all 0.1s ease-out; }
+        /* CURSOR CUSTOM */
+        #cursor-dot { width: 6px; height: 6px; background: white; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); }
+        #cursor-ring { width: 35px; height: 35px; border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: all 0.1s ease-out; }
 
-    /* NAV */
-    nav { position: fixed; top: 0; width: 100%; padding: 30px 60px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; transition: 0.4s; }
-    nav.scrolled { background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); padding: 20px 60px; }
-    .logo { font-family: 'Bebas Neue'; font-size: 24px; letter-spacing: 2px; text-decoration: none; color: white; border: 1px solid white; padding: 2px 10px; }
-    .nav-links a { font-family: 'DM Mono'; font-size: 11px; text-transform: uppercase; color: var(--muted); text-decoration: none; margin-left: 30px; letter-spacing: 1px; transition: 0.3s; }
-    .nav-links a:hover { color: white; }
+        /* NAV */
+        nav { position: fixed; top: 0; width: 100%; padding: 30px 60px; display: flex; justify-content: space-between; align-items: center; z-index: 100; backdrop-filter: blur(10px); }
+        .logo { font-family: 'Bebas Neue'; font-size: 28px; letter-spacing: 2px; text-decoration: none; color: white; border: 1px solid white; padding: 0 10px; }
+        .nav-links a { font-family: 'DM Mono'; font-size: 11px; text-transform: uppercase; color: var(--muted); text-decoration: none; margin-left: 30px; letter-spacing: 1px; }
 
-    /* HERO */
-    .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 0 60px; position: relative; }
-    .hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at 20% 80%, rgba(255,255,255,0.05) 0%, transparent 50%); pointer-events: none; }
-    .hero-eyebrow { font-family: 'DM Mono'; font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 4px; margin-bottom: 20px; }
-    .hero-title { font-family: 'Bebas Neue'; font-size: clamp(60px, 10vw, 150px); line-height: 0.9; margin-bottom: 30px; }
-    .hero-title span { color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.3); }
-    .hero-sub { max-width: 500px; color: var(--muted); font-size: 16px; line-height: 1.6; margin-bottom: 40px; }
-    .cta-btn { display: inline-block; padding: 15px 35px; background: white; color: black; font-family: 'DM Mono'; font-size: 12px; text-transform: uppercase; text-decoration: none; transition: 0.3s; }
-    .cta-btn:hover { background: var(--accent); }
+        /* HERO */
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 0 60px; }
+        .hero-title { font-family: 'Bebas Neue'; font-size: clamp(80px, 12vw, 160px); line-height: 0.9; margin-bottom: 20px; }
+        .hero-title span { color: transparent; -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4); }
+        .hero-sub { max-width: 500px; color: var(--muted); font-size: 18px; margin-bottom: 40px; }
 
-    /* SERVICES GRID */
-    .section { padding: 120px 60px; border-top: 1px solid var(--border); }
-    .section-label { font-family: 'DM Mono'; font-size: 10px; color: var(--muted); text-transform: uppercase; margin-bottom: 40px; display: block; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1px; background: var(--border); }
-    .card { background: var(--black); padding: 60px 40px; transition: 0.4s; }
-    .card:hover { background: var(--surface); }
-    .card-num { font-family: 'DM Mono'; font-size: 10px; color: var(--muted); margin-bottom: 40px; display: block; }
-    .card-title { font-family: 'Bebas Neue'; font-size: 32px; margin-bottom: 20px; }
-    .card-text { color: var(--muted); font-size: 14px; line-height: 1.6; }
+        /* GRID */
+        .section { padding: 100px 60px; border-top: 1px solid var(--border); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .card { border-left: 1px solid var(--border); padding-left: 20px; transition: 0.3s; }
+        .card:hover { border-left: 1px solid white; }
+        .card h3 { font-family: 'Bebas Neue'; font-size: 30px; margin-bottom: 15px; }
+        .card p { color: var(--muted); font-size: 14px; line-height: 1.6; }
 
-    /* CHAT CONCIERGE UI */
-    .chat-container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-    .chat-box { background: var(--surface); border: 1px solid var(--border); height: 500px; border-radius: 4px; display: flex; flex-direction: column; }
-    .chat-header { padding: 20px; border-bottom: 1px solid var(--border); font-family: 'DM Mono'; font-size: 10px; display: flex; align-items: center; gap: 10px; }
-    .status-dot { width: 6px; height: 6px; background: #00ff00; border-radius: 50%; box-shadow: 0 0 10px #00ff00; }
-    .chat-content { flex: 1; padding: 20px; overflow-y: auto; font-size: 13px; color: var(--muted); display: flex; flex-direction: column; gap: 15px; }
-    .msg { padding: 12px 16px; border-radius: 4px; max-width: 80%; }
-    .msg.bot { background: rgba(255,255,255,0.05); align-self: flex-start; border: 1px solid var(--border); }
-    .msg.user { background: white; color: black; align-self: flex-end; }
-    .chat-input-area { padding: 20px; border-top: 1px solid var(--border); display: flex; gap: 10px; }
-    .chat-input { flex: 1; background: transparent; border: none; color: white; outline: none; font-family: 'DM Sans'; }
-    .chat-submit { background: transparent; border: none; color: white; cursor: pointer; font-family: 'DM Mono'; font-size: 10px; text-transform: uppercase; }
+        /* CHAT BOX */
+        .chat-container { background: #0a0a0a; border: 1px solid var(--border); padding: 30px; border-radius: 4px; max-width: 600px; margin: 50px 0; }
+        .chat-display { height: 200px; overflow-y: auto; font-family: 'DM Mono'; font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+        .chat-input-row { display: flex; gap: 10px; border-top: 1px solid var(--border); padding-top: 20px; }
+        .chat-input { background: transparent; border: none; color: white; flex: 1; outline: none; }
+        .send-btn { background: white; color: black; border: none; padding: 8px 20px; font-family: 'Bebas Neue'; font-size: 16px; }
 
-    /* FOOTER */
-    footer { padding: 60px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; color: var(--muted2); font-family: 'DM Mono'; font-size: 10px; }
+        /* FOOTER */
+        footer { padding: 60px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+        footer span { font-family: 'DM Mono'; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 2px; }
 
-    /* REVEAL ANIMATION */
-    .reveal { opacity: 0; transform: translateY(30px); transition: 1s all ease; }
-    .reveal.active { opacity: 1; transform: translateY(0); }
+        /* ANIMATIONS */
+        .reveal { opacity: 0; transform: translateY(30px); transition: 1s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
-    @media (max-width: 900px) {
-      nav, .hero, .section { padding: 20px; }
-      .chat-container { grid-template-columns: 1fr; gap: 40px; }
-      #cursor-dot, #cursor-ring { display: none; }
-      body { cursor: auto; }
-    }
-  </style>
+        @media (max-width: 768px) {
+            nav, .hero, .section, footer { padding: 20px; }
+            * { cursor: auto; }
+            #cursor-dot, #cursor-ring { display: none; }
+        }
+    </style>
 </head>
 <body>
 
-  <div id="cursor-dot"></div>
-  <div id="cursor-ring"></div>
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
 
-  <nav id="navbar">
-    <a href="#" class="logo">V</a>
-    <div class="nav-links">
-      <a href="#services">Architecture</a>
-      <a href="#concierge">Concierge</a>
-      <a href="mailto:contact@vantgard.ai">Contact</a>
-    </div>
-  </nav>
-
-  <section class="hero">
-    <div class="hero-eyebrow reveal">AI Architecture for the Enterprise</div>
-    <h1 class="hero-title reveal">THE VANGUARD<br><span>OF INTELLIGENT</span><br>SYSTEMS</h1>
-    <p class="hero-sub reveal">We architect autonomous AI systems that eliminate operational friction and compound ROI for B2B enterprises.</p>
-    <a href="#concierge" class="cta-btn reveal">Request Diagnostic</a>
-  </section>
-
-  <section class="section" id="services">
-    <span class="section-label">Capabilities</span>
-    <div class="grid">
-      <div class="card reveal">
-        <span class="card-num">001</span>
-        <h3 class="card-title">Autonomous Architecture</h3>
-        <p class="card-text">End-to-end deployment of self-healing AI pipelines that manage enterprise logic without human friction.</p>
-      </div>
-      <div class="card reveal">
-        <span class="card-num">002</span>
-        <h3 class="card-title">Infrastructure Optimization</h3>
-        <p class="card-text">Identifying and automating high-leverage bottlenecks within your existing B2B operational stack.</p>
-      </div>
-      <div class="card reveal">
-        <span class="card-num">003</span>
-        <h3 class="card-title">Strategic Consulting</h3>
-        <p class="card-text">Bespoke AI roadmaps designed for market dominance and massive efficiency gains.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="concierge">
-    <div class="chat-container">
-      <div class="chat-text">
-        <span class="section-label">Diagnostic</span>
-        <h2 style="font-family:'Bebas Neue'; font-size: 60px; margin-bottom: 20px;">VANTGARD<br>CONCIERGE</h2>
-        <p style="color:var(--muted); line-height:1.6;">Our AI assistant is ready to analyze your enterprise friction in real-time. Start a dialogue to identify automation potential.</p>
-      </div>
-      <div class="chat-box reveal">
-        <div class="chat-header">
-          <div class="status-dot"></div>
-          VANTGARD_SYSTEM_ASSISTANT v1.0
+    <nav>
+        <a href="#" class="logo">VANTGARD</a>
+        <div class="nav-links">
+            <a href="#services">Architecture</a>
+            <a href="#diagnostic">Diagnostic</a>
         </div>
-        <div class="chat-content" id="chat-box">
-          <div class="msg bot">System Initialized. How can I assist your enterprise today?</div>
+    </nav>
+
+    <section class="hero">
+        <h1 class="hero-title reveal">VANTGARD<br><span>SYSTEMS</span></h1>
+        <p class="hero-sub reveal">Architecting autonomous AI infrastructure for high-performance enterprises.</p>
+    </section>
+
+    <section class="section" id="services">
+        <div class="grid">
+            <div class="card reveal">
+                <h3>01 / Autonomous Pipelines</h3>
+                <p>Systems that think, adapt, and execute without human intervention.</p>
+            </div>
+            <div class="card reveal">
+                <h3>02 / B2B Optimization</h3>
+                <p>Eliminating operational friction to compound your enterprise ROI.</p>
+            </div>
         </div>
-        <div class="chat-input-area">
-          <input type="text" class="chat-input" id="chat-input" placeholder="Enter query...">
-          <button class="chat-submit" onclick="handleChat()">Send</button>
+    </section>
+
+    <section class="section" id="diagnostic">
+        <h2 style="font-family: 'Bebas Neue'; font-size: 40px; margin-bottom: 20px;">SYSTEM DIAGNOSTIC</h2>
+        <div class="chat-container reveal">
+            <div class="chat-display" id="chatBox">
+                [SYSTEM]: Waiting for enterprise query...
+            </div>
+            <div class="chat-input-row">
+                <input type="text" id="userInput" class="chat-input" placeholder="Describe your operational friction...">
+                <button class="send-btn" onclick="sendMessage()">SEND</button>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <footer>
-    <span>VANTGARD SYSTEMS © 2026</span>
-    <span>ESTABLISHED FOR THE NEXT ERA</span>
-  </footer>
+    <footer>
+        <span>VANTGARD SYSTEMS © 2026</span>
+        <span>ESTABLISHED FOR THE NEXT ERA</span>
+    </footer>
 
-  <script>
-    // CURSOR LOGIC
-    const dot = document.getElementById('cursor-dot');
-    const ring = document.getElementById('cursor-ring');
-    document.addEventListener('mousemove', (e) => {
-      dot.style.top = e.clientY + 'px';
-      dot.style.left = e.clientX + 'px';
-      ring.style.top = e.clientY + 'px';
-      ring.style.left = e.clientX + 'px';
-    });
+    <script>
+        // CURSOR LOGIC
+        const dot = document.getElementById('cursor-dot');
+        const ring = document.getElementById('cursor-ring');
+        document.addEventListener('mousemove', (e) => {
+            dot.style.top = e.clientY + 'px';
+            dot.style.left = e.clientX + 'px';
+            ring.style.top = e.clientY + 'px';
+            ring.style.left = e.clientX + 'px';
+        });
 
-    // NAV SCROLL EFFECT
-    window.onscroll = () => {
-      const nav = document.getElementById('navbar');
-      if (window.scrollY > 50) nav.classList.add('scrolled');
-      else nav.classList.remove('scrolled');
-      
-      // REVEAL ANIMATION
-      document.querySelectorAll('.reveal').forEach(el => {
-        if (el.getBoundingClientRect().top < window.innerHeight - 50) {
-          el.classList.add('active');
+        // REVEAL LOGIC
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+        reveals.forEach(r => observer.observe(r));
+
+        // CHAT LOGIC
+        function sendMessage() {
+            const input = document.getElementById('userInput');
+            const box = document.getElementById('chatBox');
+            if(!input.value) return;
+
+            box.innerHTML += `<br><span style="color:white">> ${input.value}</span>`;
+            const msg = input.value;
+            input.value = '';
+            
+            setTimeout(() => {
+                box.innerHTML += `<br>[ANALYSIS]: Operational debt detected in "${msg}". Recommend immediate structural audit.`;
+                box.scrollTop = box.scrollHeight;
+            }, 800);
         }
-      });
-    };
-
-    // MOCK CHAT LOGIC
-    function handleChat() {
-      const input = document.getElementById('chat-input');
-      const box = document.getElementById('chat-box');
-      if(!input.value) return;
-
-      box.innerHTML += `<div class="msg user">${input.value}</div>`;
-      const val = input.value;
-      input.value = '';
-
-      setTimeout(() => {
-        box.innerHTML += `<div class="msg bot">Analyzing "${val}"... Operational debt detected. I recommend a diagnostic session to evaluate ROI compounding.</div>`;
-        box.scrollTop = box.scrollHeight;
-      }, 1000);
-    }
-    
-    // Initial Trigger
-    window.onload = () => document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
-  </script>
+    </script>
 </body>
 </html>
